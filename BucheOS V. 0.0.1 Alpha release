@@ -1,0 +1,135 @@
+import datetime
+import time
+
+print("Buche OS V.0.0.1 Pre-Alpha release")
+print("Starting Buche Shell...")
+time.sleep(7)
+print("Welcome To BucheOS")
+user = input("Please Enter Your Username: ")
+time.sleep(3)
+print("Welcome", user, "!")
+while True:
+    print("Applications available: 1. Calculator, 2. Text editor, 3. Terminal, 4. Web browser, 5. Settings, 6. Shutdown 7.Update checker")
+    app = input("Please enter the number of the application you would like to use: ")
+
+    if app == '1':
+        # Calculator App
+        print("Welcome to the calculator!")
+        num1 = float(input("Enter the first number: "))
+        num2 = float(input("Enter the second number: "))
+        arithmetic_operation = input("Enter the arithmetic operation: ")
+
+        if arithmetic_operation == '+':
+            print(num1 + num2)
+        elif arithmetic_operation == '-':
+            print(num1 - num2)
+        elif arithmetic_operation == '*':
+            print(num1 * num2)
+        elif arithmetic_operation == '/':
+            print(num1 / num2)
+        elif arithmetic_operation == '**':
+            print(num1 ** num2)
+        elif arithmetic_operation == '//':
+            print(num1 // num2)
+        elif arithmetic_operation == '%':
+            print(num1 % num2)
+        else:
+            print("Invalid Operation")
+
+    elif app == '2':
+        # Text Editor App
+        filename = input("Enter the filename: ")
+
+        # Functions for Text Editor App
+        def read_file():
+            try:
+                with open(filename, 'r') as file:
+                    content = file.read()
+                    print(content)
+            except FileNotFoundError:
+                print("File not found.")
+
+        def write_file():
+            content = input("Enter the content: ")
+            with open(filename, 'w') as file:
+                file.write(content)
+            print("File saved.")
+
+        def append_file():
+            content = input("Enter the content to append: ")
+            with open(filename, 'a') as file:
+                file.write(content)
+            print("Content appended.")
+
+        while True:
+            print("Options:")
+            print("1. Read file")
+            print("2. Write to file")
+            print("3. Append to file")
+            print("4. Quit")
+
+            choice = input("Enter your choice: ")
+
+            if choice == '1':
+                read_file()
+            elif choice == '2':
+                write_file()
+            elif choice == '3':
+                append_file()
+            elif choice == '4':
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+    elif app == '3':
+        # Terminal App
+        while True:
+            print("Welcome to the terminal!")
+            command = input("$")
+            if command == "exit":
+                exit()
+            if command == "help":
+                print("Available commands: vir, exit, help, time, date")
+            if command == "time":
+                print(datetime.datetime.now())
+            if command == "vir":
+                print("Buche OS V.0.0.1 Pre-Alpha release ")
+                
+            else:
+                command = input("$")
+
+    elif app == '4':
+        # Web Browser App - Simple Text Version
+        print("Web browser app - Simple Text Version")
+        url = input("Enter URL: ")
+        print(f"Opening {url}")
+
+    elif app == '5':
+        # Settings App
+        print("Settings:")
+        print("1. Change username")
+        print("2. About OS")
+        setting_choice = input("Enter the number of the setting you would like to access: ")
+
+        if setting_choice == '1':
+            new_username = input("Enter the new username: ")
+            user = new_username
+            print("Username changed to:", user)
+        elif setting_choice == '2':
+            print("Buche OS V.0.0.1 Pre-Alpha release - A simple OS created for learning purposes.")
+        else:
+            print("Invalid setting choice")
+
+    elif app == '6':
+        print("Shutting down...")
+        time.sleep(5)
+        exit() 
+    elif app == '7':
+      print("Searching for updates.")
+      time.sleep(5)
+      print("Updates Available at  ")
+
+
+    go_back = input("Do you want to go back to the applications selection? (y/n): ")
+    if go_back.lower() != 'y':
+        break
